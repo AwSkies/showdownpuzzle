@@ -14,7 +14,7 @@
                 "background": {
                     "activeOnStart": true,
                     "beginsPattern": "Compiling...",
-                    "endsPattern": "Compiled .*",
+                    "endsPattern": "Compiled .*"
                 }
             }
         }
