@@ -4,6 +4,14 @@
   "homepage": "https://awskies.github.io/showdownpuzzle",
   "private": true,
   "dependencies": {
+    "@pkmn/client": "^0.6.20",
+    "@pkmn/data": "^0.9.0",
+    "@pkmn/dex": "^0.9.0",
+    "@pkmn/img": "^0.2.25",
+    "@pkmn/login": "^0.2.0",
+    "@pkmn/protocol": "^0.6.20",
+    "@pkmn/sets": "^5.1.2",
+    "@pkmn/view": "^0.6.20",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -44,6 +52,8 @@
     ]
   },
   "devDependencies": {
+    "@pkmn/streams": "^1.1.0",
+    "@pkmn/types": "^4.0.0",
     "gh-pages": "^6.1.1"
   }
 }
