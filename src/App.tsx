@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import styles from './App.module.css';
 import Bot from './bot'
-import buildWorker from './utils/build-worker';
+import WebWorker from './utils/web-worker';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -12,7 +12,7 @@ function App() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const bot = buildWorker(Bot);
+    const bot = new WebWorker(Bot);
     bot.postMessage({ username, password });
 
     bot.onmessage = (e: MessageEvent) => {
