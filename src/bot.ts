@@ -11,9 +11,13 @@ const bot = () => {
         const user = new User(connection);
 
         connection.open(data => {
-            // TODO: Finish login logic
-            console.log(data.toString());
-            // TODO: The rest of the Showdown bot logic
+            console.log(data);
+            const parsedData = Protocol.parse(data.toString());
+            let current = parsedData.next();
+            while (!current.done) {
+                // TODO: Login and bot logic
+                current = parsedData.next();
+            }
         });
     };
 }
