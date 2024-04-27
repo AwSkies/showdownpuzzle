@@ -5,7 +5,6 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [canLogin, setCanLogin] = useState(true);
-  const [messages, setMessages] = useState<any[]>([]);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -14,10 +13,10 @@ function App() {
     bot.postMessage({ username, password });
 
     bot.onmessage = (e: MessageEvent) => {
-      setMessages([...messages, e.data]);
+      
     };
     bot.onerror = (e: ErrorEvent) => {
-      setMessages([...messages, e.error]);
+      
     };
 
     setCanLogin(false);
@@ -34,10 +33,6 @@ function App() {
         <br />
         <input type='submit' value='Log in' disabled={!canLogin} />
       </form>
-      <h3>Messages:</h3>
-      <div className={styles.messages}>
-        {messages.map((message, i) => <p key={`key${i}`}>{message}</p>)}
-      </div>
     </div>
   );
 }
