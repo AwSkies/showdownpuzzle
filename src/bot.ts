@@ -2,24 +2,22 @@ import { Protocol } from "@pkmn/protocol";
 import Connection from "./utils/connection";
 import User from "./utils/user";
 
-const bot = () => {
-    onmessage = ({ data }) => {
-        const username = data.username;
-        const password = data.password;
+const self = globalThis;
 
-        const connection = new Connection();
-        const user = new User(connection);
+self.onmessage = ({ data }) => {
+    const username = data.username;
+    const password = data.password;
 
-        connection.open(data => {
-            console.log(data);
-            const parsedData = Protocol.parse(data.toString());
-            let current = parsedData.next();
-            while (!current.done) {
-                // TODO: Login and bot logic
-                current = parsedData.next();
-            }
-        });
-    };
-}
+    const connection = new Connection();
+    const user = new User(connection);
 
-export default bot;
+    connection.open(data => {
+        console.log(data);
+        const parsedData = Protocol.parse(data.toString());
+        let current = parsedData.next();
+        while (!current.done) {
+            // TODO: Login and bot logic
+            current = parsedData.next();
+        }
+    });
+};
