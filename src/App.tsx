@@ -16,7 +16,7 @@ function App() {
       
     };
     bot.onerror = (e: ErrorEvent) => {
-      
+      console.error(e);
     };
 
     setCanLogin(false);
