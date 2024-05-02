@@ -1,16 +1,17 @@
-type Color = "\x1b[30m" | "\x1b[31m" | "\x1b[32m" | "\x1b[33m" | "\x1b[34m" | "\x1b[35m" | "\x1b[36m" | "\x1b[37m" | "";
-
+// https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
 const colors = {
-    black: "\x1b[30m" as Color,
-    red: "\x1b[31m" as Color,
-    green: "\x1b[32m" as Color,
-    yellow: "\x1b[33m" as Color,
-    blue: "\x1b[34m" as Color,
-    magenta: "\x1b[35m" as Color,
-    cyan: "\x1b[36m" as Color,
-    white: "\x1b[37m" as Color,
-    none: "" as Color
-}
+    black: "\x1b[30m",
+    red: "\x1b[31m",
+    green: "\x1b[32m",
+    yellow: "\x1b[33m",
+    blue: "\x1b[34m",
+    magenta: "\x1b[35m",
+    cyan: "\x1b[36m",
+    white: "\x1b[37m",
+    none: ""
+};
+
+type Color = typeof colors[keyof typeof colors];
 
 function print(message: string, fn: (message?: any) => void = console.log, color: Color = colors.none) {
     fn(`${color}${message}`);
