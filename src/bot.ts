@@ -1,6 +1,7 @@
 import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
 import Connection from "./utils/connection";
+import { print } from "./utils/print-colored";
 
 const self = globalThis;
 
@@ -26,14 +27,20 @@ self.onmessage = ({ data }) => {
         }
 
         '|updateuser|'(args: Protocol.Args['|updateuser|']) {
-            console.log(`Logged in as \`${args[1].trim()}\``);
+            print(`Logged in as \`${args[1].trim()}\``);
+        }
+
+        '|init|'(args: Protocol.Args['|init|']) {
+            print(`Beginning ${args[1]}`);
+        }
+
+        '|request|'(args: Protocol.Args['|request|']) {
+            const { active, side } = JSON.parse(args[1]);
         }
     }();
 
     // Open connection with message handler
     connection.open(data => {
-        console.log(data);
-
         // Parse each line of data
         const parser = Protocol.parse(data.toString());
         let current = parser.next();
