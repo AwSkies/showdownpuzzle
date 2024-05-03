@@ -13,7 +13,7 @@ function App() {
     bot.postMessage({ username, password });
 
     bot.onmessage = (e: MessageEvent) => {
-      
+      // TODO: Handle messages sent from the WebWorker
     };
     bot.onerror = (e: ErrorEvent) => {
       console.error(e);

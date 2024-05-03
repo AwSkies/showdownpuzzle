@@ -2,12 +2,13 @@ import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
 import Connection from "./utils/connection";
 import { print } from "./utils/print-colored";
+import { Puzzle } from "./utils/puzzle";
 
 const self = globalThis;
 
 self.onmessage = ({ data }) => {
     const BYPASS_CORS = 'https://cors-anywhere.herokuapp.com/';
-    const { username, password } = data;
+    const { username, password, puzzle, challenger }: { username: string, password: string, puzzle: Puzzle, challenger: string } = data;
     const connection = new Connection();
 
     // Create new instance of anonymous class which implements handler
@@ -28,6 +29,7 @@ self.onmessage = ({ data }) => {
 
         '|updateuser|'(args: Protocol.Args['|updateuser|']) {
             print(`Logged in as \`${args[1].trim()}\``);
+            // TODO: Change avatar?
         }
 
         '|init|'(args: Protocol.Args['|init|']) {
@@ -36,6 +38,7 @@ self.onmessage = ({ data }) => {
 
         '|request|'(args: Protocol.Args['|request|']) {
             const { active, side } = JSON.parse(args[1]);
+            // TODO: Puzzle command logic
         }
     }();
 
@@ -46,11 +49,11 @@ self.onmessage = ({ data }) => {
         let current = parser.next();
         while (!current.done) {
             // Call the corresponding handler function with the correct args and kwArgs
-            const {args, kwArgs} = current.value;
+            const { args, kwArgs } = current.value;
             const key = Protocol.key(args);
-            if (key && key in handler) 
+            if (key && key in handler)
                 (handler as any)[`${key}`](args, kwArgs);
-            
+
             current = parser.next();
         }
     });
