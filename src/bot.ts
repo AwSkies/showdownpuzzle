@@ -9,7 +9,7 @@ const self = globalThis;
 self.onmessage = ({ data }) => {
     const BYPASS_CORS = 'https://corsproxy.io/?';
     const { username, password, puzzle, challenger }: { username: string, password: string, puzzle: Puzzle, challenger: string } = data;
-    const connection = new Connection();
+    const user = new User();
 
     // Create new instance of anonymous class which implements handler
     // This will handle all communications sent from Showdown 
@@ -24,7 +24,7 @@ self.onmessage = ({ data }) => {
             })).text();
             const cmd = action.onResponse(response);
             if (cmd)
-                connection.send(cmd);
+                user.send(cmd);
         }
 
         '|updateuser|'(args: Protocol.Args['|updateuser|']) {
@@ -43,7 +43,7 @@ self.onmessage = ({ data }) => {
     }();
 
     // Open connection with message handler
-    connection.open(data => {
+    user.open(data => {
         // Parse each line of data
         const parser = Protocol.parse(data.toString());
         let current = parser.next();
