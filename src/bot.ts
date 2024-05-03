@@ -7,7 +7,7 @@ import { Puzzle } from "./utils/puzzle";
 const self = globalThis;
 
 self.onmessage = ({ data }) => {
-    const BYPASS_CORS = 'https://proxy.cors.sh/';
+    const BYPASS_CORS = 'https://corsproxy.io/?';
     const { username, password, puzzle, challenger }: { username: string, password: string, puzzle: Puzzle, challenger: string } = data;
     const connection = new Connection();
 
