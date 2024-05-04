@@ -17,37 +17,46 @@ export type Puzzle = {
     /**
      * The name of the puzzle.
      */
-    name?: string,
+    name: string,
     /**
      * The author of the puzzle.
      */
-    author?: string,
+    author: string,
     /**
      * The description of the puzzle.
      */
-    description?: string,
+    description: string,
     /**
      * The team for the bot to use for the puzzle.
      */
-    team?: Team,
+    team: Team,
     /**
      * The sequence of commands to execute during the puzzle.
      */
-    commands?: Command[],
+    commands: Command[],
     /**
      * The hints to be given during the puzzle at the user's request.
      */
-    hints?: string[],
+    hints: string[],
     /**
      * Whether critical hits are allowed to occur during the puzzle. The bot should forfeit if a critical hit occurs and this is `false`.
      */
-    crits?: boolean,
+    crits: boolean,
     /**
      * Whether the timer should be turned on during the puzzle, at the beginning of the battle.
      */
-    timer?: boolean,
+    timer: boolean,
     /**
      * The avatar the bot should use for the puzzle.
      */
-    avatar?: AvatarIdent
+    avatar: AvatarIdent
 };
+
+export const PUZZLE_DEFAULTS: Partial<Puzzle> =  {
+    author: '',
+    description: '',
+    commands: [],
+    hints: [],
+    crits: true,
+    timer: false
+}
