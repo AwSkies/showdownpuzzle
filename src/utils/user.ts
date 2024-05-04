@@ -8,6 +8,6 @@ export default class User extends Connection {
     }
 
     sendCommand(command: string, args: string[] = []) {
-        this.send(`/${command} ${args.join(' ')}`);
+        this.send(`/${command} ${args.join(', ')}`);
     }
 }
