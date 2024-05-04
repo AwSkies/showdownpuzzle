@@ -58,5 +58,6 @@ export const PUZZLE_DEFAULTS: Partial<Puzzle> =  {
     commands: [],
     hints: [],
     crits: true,
-    timer: false
+    timer: false,
+    avatar: '' as AvatarIdent
 }
