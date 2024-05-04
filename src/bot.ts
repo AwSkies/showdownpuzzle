@@ -52,7 +52,7 @@ self.onmessage = ({ data }) => {
             const { roomid, args, kwArgs } = current.value;
             const key = Protocol.key(args);
             if (key && key in handler) {
-                handler.roomid = roomid;
+                user.roomid = roomid;
                 (handler as any)[`${key}`](args, kwArgs);
             }
 
