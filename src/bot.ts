@@ -49,10 +49,12 @@ self.onmessage = ({ data }) => {
         let current = parser.next();
         while (!current.done) {
             // Call the corresponding handler function with the correct args and kwArgs
-            const { args, kwArgs } = current.value;
+            const { roomid, args, kwArgs } = current.value;
             const key = Protocol.key(args);
-            if (key && key in handler)
+            if (key && key in handler) {
+                handler.roomid = roomid;
                 (handler as any)[`${key}`](args, kwArgs);
+            }
 
             current = parser.next();
         }
