@@ -1,8 +1,9 @@
 import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
-import Connection from "./utils/connection";
 import { print } from "./utils/print-colored";
-import { Puzzle } from "./utils/puzzle";
+import { PUZZLE_DEFAULTS, Puzzle } from "./utils/puzzle";
+import User from "./utils/user";
+import { Sets } from "@pkmn/sets";
 
 const self = globalThis;
 
@@ -25,11 +26,14 @@ self.onmessage = ({ data }) => {
             const cmd = action.onResponse(response);
             if (cmd)
                 user.send(cmd);
+            if (puzzle.avatar) {
+                user.sendCommand('avatar', [puzzle.avatar]);
+            }
+            this.challenge()
         }
 
         '|updateuser|'(args: Protocol.Args['|updateuser|']) {
-            print(`Logged in as \`${args[1].trim()}\``);
-            // TODO: Change avatar?
+            print(`Logged in as \`${args[1].trim()}\` with avatar \`${args[3]}\``);
         }
 
         '|init|'(args: Protocol.Args['|init|']) {
@@ -37,8 +41,23 @@ self.onmessage = ({ data }) => {
         }
 
         '|request|'(args: Protocol.Args['|request|']) {
-            const { active, side } = JSON.parse(args[1]);
-            // TODO: Puzzle command logic
+            const json = args[1];
+            if (json) {
+                const { active, side } = JSON.parse(args[1]);
+                // TODO: Puzzle command logic
+            }
+        }
+
+        '|-crit|'(args: Protocol.Args['|-crit|']) {
+            if (!puzzle.crits) {
+                user.send(`Critical hit detected. Aborting puzzle and resending a challenge to ${challenger}.`);
+                user.sendCommand('forfeit');
+                this.challenge()
+            }
+        }
+
+        challenge() {
+            user.sendCommand('challenge', [challenger, /*puzzle.team?.format as string*/'gen9nationaldexubers']);
         }
     }();
 
