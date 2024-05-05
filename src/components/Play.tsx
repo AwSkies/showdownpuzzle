@@ -25,7 +25,7 @@ function Play() {
   }
 
   return (
-    <div>
+    <div className={styles.play}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <input id='username' value={username} placeholder='Username' required onChange={(e) => setUsername(e.target.value)} />

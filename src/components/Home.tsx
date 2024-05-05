@@ -2,7 +2,7 @@ import styles from "./Home.module.css";
 
 function Home() {
   return (
-    <div>
+    <div className={styles.home}>
       <h2>Under Construction</h2>
       <p>
         <a href="https://github.com/awskies">AwSky</a> is currently working on bringing Showdown Puzzles to the browser.
