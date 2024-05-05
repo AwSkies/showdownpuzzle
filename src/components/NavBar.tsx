@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { pages, mapPages } from '../utils/navigation';
+import { pages } from '../utils/navigation';
 import styles from './NavBar.module.css';
 
 function NavBar() {
@@ -7,8 +7,8 @@ function NavBar() {
     <div className={styles.navBar}>
       <h1>Showdown Puzzle</h1>
       <div>
-        {mapPages(
-          (name, index) => <NavLink to={`/showdownpuzzle/${name}`} className={styles.navLink} key={`key${index}`}>{pages[name].name}</NavLink>
+        {pages.map(
+          (page, index) => <NavLink to={`/showdownpuzzle/${page.path}`} className={styles.navLink} key={`key${index}`}>{page.display}</NavLink>
         )}
       </div>
     </div>

@@ -3,14 +3,26 @@ import Home from '../components/Home';
 import Play from '../components/Play';
 import Create from '../components/Create';
 
-const pages: {[key: string]: (props?: any) => React.JSX.Element} = {
-  '': Home,
-  'play': Play,
-  'create': Create
-}
+const pages: {
+    path: string,
+    display: string,
+    element: (props?: any) => React.JSX.Element
+}[] = [
+        {
+            path: '',
+            display: 'Home',
+            element: Home
+        },
+        {
+            path: 'play',
+            display: 'Play',
+            element: Play
+        },
+        {
+            path: 'create',
+            display: 'Create',
+            element: Create
+        }
+    ]
 
-function mapPages(fn: (name: string, index: number, array: string[]) => any) {
-    return Object.keys(pages).map(fn);
-}
-
-export { pages, mapPages };
+export { pages };

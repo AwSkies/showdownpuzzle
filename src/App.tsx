@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import { pages } from "./utils/navigation";
 import styles from "./App.module.css";
-import { pages, mapPages } from "./utils/navigation";
 
 function App() {
   // Since the navbar is being procedurally generated, the same props object will be passed into every component
@@ -12,8 +12,8 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          {mapPages(
-            (name, index) => <Route path={`/showdownpuzzle/${name}`} element={pages[name](props)} key={`key${index}`} />
+          {pages.map(
+            (page, index) => <Route path={`/showdownpuzzle/${page.path}`} element={page.element(props)} key={`key${index}`} />
           )}
         </Routes>
       </BrowserRouter>
