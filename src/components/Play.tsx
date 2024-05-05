@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import styles from './Play.module.css';
 import { PUZZLE_DEFAULTS } from '../utils/puzzle';
+import styles from './Play.module.css';
 
 function Play() {
   const [username, setUsername] = useState('');
@@ -25,7 +25,7 @@ function Play() {
   }
 
   return (
-    <div className={styles.div}>
+    <div>
       <h1>Under Construction</h1>
       <p>This page is currently being used for testing.</p>
       <form onSubmit={handleSubmit}>
