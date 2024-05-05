@@ -13,7 +13,7 @@ function App() {
         <NavBar />
         <Routes>
           {mapPages(
-            (name) => <Route path={`/showdownpuzzle/${name}`} element={pages[name](props)} />
+            (name, index) => <Route path={`/showdownpuzzle/${name}`} element={pages[name](props)} key={`key${index}`} />
           )}
         </Routes>
       </BrowserRouter>

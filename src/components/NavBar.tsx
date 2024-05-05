@@ -8,7 +8,7 @@ function NavBar() {
       <h1>Showdown Puzzle</h1>
       <div>
         {mapPages(
-          (name) => <NavLink to={`/showdownpuzzle/${name}`} className={styles.navLink}>{pages[name].name}</NavLink>
+          (name, index) => <NavLink to={`/showdownpuzzle/${name}`} className={styles.navLink} key={`key${index}`}>{pages[name].name}</NavLink>
         )}
       </div>
     </div>
