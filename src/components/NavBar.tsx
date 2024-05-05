@@ -6,9 +6,9 @@ function NavBar() {
     <div className={styles.navBar}>
       <h1>Showdown Puzzle</h1>
       <div>
-        <NavLink to={'/'}  className={styles.navLink}>Home</NavLink>
-        <NavLink to={'/play'}  className={styles.navLink}>Play</NavLink>
-        <NavLink to={'/create'}  className={styles.navLink}>Create</NavLink>
+        <NavLink to={'/showdownpuzzle'}  className={styles.navLink}>Home</NavLink>
+        <NavLink to={'/showdownpuzzle/play'}  className={styles.navLink}>Play</NavLink>
+        <NavLink to={'/showdownpuzzle/create'}  className={styles.navLink}>Create</NavLink>
       </div>
     </div>
   );

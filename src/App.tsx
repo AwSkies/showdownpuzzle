@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/showdownpuzzle" element={<Home />} />
+          <Route path="/showdownpuzzle/play" element={<Play />} />
+          <Route path="/showdownpuzzle/create" element={<Create />} />
         </Routes>
       </BrowserRouter>
     </div>
