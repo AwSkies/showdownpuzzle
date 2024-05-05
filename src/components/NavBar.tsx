@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { pages, mapPages } from '../utils/navigation';
 import styles from './NavBar.module.css';
 
 function NavBar() {
@@ -6,9 +7,9 @@ function NavBar() {
     <div className={styles.navBar}>
       <h1>Showdown Puzzle</h1>
       <div>
-        <NavLink to={'/showdownpuzzle'}  className={styles.navLink}>Home</NavLink>
-        <NavLink to={'/showdownpuzzle/play'}  className={styles.navLink}>Play</NavLink>
-        <NavLink to={'/showdownpuzzle/create'}  className={styles.navLink}>Create</NavLink>
+        {mapPages(
+          (name) => <NavLink to={`/showdownpuzzle/${name}`} className={styles.navLink}>{pages[name].name}</NavLink>
+        )}
       </div>
     </div>
   );
