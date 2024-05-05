@@ -26,8 +26,6 @@ function Play() {
 
   return (
     <div>
-      <h1>Under Construction</h1>
-      <p>This page is currently being used for testing.</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <input id='username' value={username} placeholder='Username' required onChange={(e) => setUsername(e.target.value)} />
