@@ -1,0 +1,9 @@
+.navBar {
+    text-align: center;
+    margin: auto;
+    position: sticky;
+}
+
+.navLink {
+    padding: 10px;
+}

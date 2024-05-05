@@ -1,8 +1,8 @@
 import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
-import { print } from "./utils/print-colored";
-import { PUZZLE_DEFAULTS, Puzzle } from "./utils/puzzle";
-import User from "./utils/user";
+import { print } from "./print-colored";
+import { PUZZLE_DEFAULTS, Puzzle } from "./puzzle";
+import User from "./user";
 import { Sets } from "@pkmn/sets";
 
 const self = globalThis;
