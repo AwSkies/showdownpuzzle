@@ -1,9 +1,9 @@
 import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
+import { Sets } from "@pkmn/sets";
 import { print } from "./print-colored";
 import { PUZZLE_DEFAULTS, Puzzle } from "./puzzle";
 import User from "./user";
-import { Sets } from "@pkmn/sets";
 
 const self = globalThis;
 
