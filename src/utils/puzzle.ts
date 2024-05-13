@@ -30,7 +30,7 @@ export type Puzzle = {
      * The team for the bot to use for the puzzle, in PokePaste format.
      */
     // TODO: Allow for string to be PokePaste link as well
-    team: string,
+    team: Team,
     /**
      * The sequence of commands to execute during the puzzle.
      */
@@ -56,7 +56,6 @@ export type Puzzle = {
 export const PUZZLE_DEFAULTS: Partial<Puzzle> =  {
     author: '',
     description: '',
-    team: '',
     commands: [],
     hints: [],
     crits: true,
