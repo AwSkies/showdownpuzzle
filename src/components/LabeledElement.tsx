@@ -4,7 +4,7 @@ function LabeledElement({ label, element, description }: { label: string, elemen
   return (
     <div className={styles.labeledElement}>
       <label htmlFor={element.props.id}><abbr title={description}>{`${label}:`}</abbr> </label>
-      {element}
+      <span className={styles.content}>{element}</span>
     </div>
   );
 }
