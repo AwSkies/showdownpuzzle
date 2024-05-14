@@ -16,7 +16,7 @@ function Play() {
     bot.postMessage({ username, password, challenger });
 
     bot.onmessage = (e: MessageEvent) => {
-      // TODO: Handle messages sent from the WebWorker
+      // TODO: Decide on message format and handle messages sent from the WebWorker
     };
     bot.onerror = (e: ErrorEvent) => {
       console.error(e);
@@ -26,20 +26,18 @@ function Play() {
   }
 
   return (
-    <div className={styles.play}>
-      <form onSubmit={handleSubmit}>
-        <LabeledElement label='Username' element={
-          <input id='play-username' value={username} placeholder='Username' required onChange={(e) => setUsername(e.target.value)} />
+      <form className={styles.play} onSubmit={handleSubmit}>
+        <LabeledElement label="Username" element={
+          <input id="play-username" value={username} placeholder="Username" required onChange={(e) => setUsername(e.target.value)} />
         } />
-        <LabeledElement label='Password' element={
-          <input id='play-password' value={password} placeholder='Password' type='password' onChange={(e) => setPassword(e.target.value)} />
+        <LabeledElement label="Password" element={
+          <input id="play-password" value={password} placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
         } />
-        <LabeledElement label='Challenger Username' element={
-          <input id='play-challenger' value={challenger} placeholder='Username' required onChange={(e) => setChallenger(e.target.value)} />
-        } description='The username of the Pokemon Showdown account to challenge.'/>
-        <input type='submit' value='Log in' disabled={!canLogin} />
+        <LabeledElement label="Challenger Username" description="The username of the Pokemon Showdown account to challenge." element={
+          <input id="play-challenger" value={challenger} placeholder="Username" required onChange={(e) => setChallenger(e.target.value)} />
+        } />
+        <input type="submit" value="Log in" disabled={!canLogin} />
       </form>
-    </div>
   );
 }
 
