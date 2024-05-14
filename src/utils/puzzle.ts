@@ -53,7 +53,7 @@ export type Puzzle = {
     avatar?: AvatarIdent
 };
 
-export const PUZZLE_DEFAULTS: Partial<Puzzle> =  {
+export const puzzleDefaults: Partial<Puzzle> =  {
     name: '',
     author: '',
     description: '',

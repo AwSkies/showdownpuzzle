@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import LabeledElement from './LabeledElement';
-import { PUZZLE_DEFAULTS } from '../utils/puzzle';
+import { puzzleDefaults } from '../utils/puzzle';
 import styles from './Play.module.css';
 
 function Play() {

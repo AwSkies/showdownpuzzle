@@ -2,7 +2,7 @@ import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
 import { Sets } from "@pkmn/sets";
 import { print } from "./print-colored";
-import { PUZZLE_DEFAULTS, Puzzle } from "./puzzle";
+import { puzzleDefaults, Puzzle } from "./puzzle";
 import User from "./user";
 
 const self = globalThis;
