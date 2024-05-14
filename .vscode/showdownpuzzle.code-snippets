@@ -20,8 +20,8 @@
 		"prefix": "labeledinput",
 		"body": [
 			"<LabeledElement label=\"$1\" description=\"$2\" element={",
-			"  <input id=\"$3\" type=\"${4:text}\" value={$5} placeholder=\"$6\" ${7:required }onChange={e => $8} $0/>",
-			"} />"
+			"  <input id=\"$3\" type=\"${4:text}\" value={$5} placeholder=\"$6\" ${7:required }onChange={e => $8} />",
+			"} />$0"
 		],
 		"description": "Create a labeled input with proper parameters."
 	},
@@ -30,8 +30,8 @@
 		"prefix": "labeledelement",
 		"body": [
 			"<LabeledElement label=\"$1\" description=\"$2\" element={",
-			"  <$3 id=\"$4\" $0 />",
-			"} />"
+			"  <$3 id=\"$4\" $5 />",
+			"} />$0"
 		],
 		"description": "Create a labeled element"
 	}
