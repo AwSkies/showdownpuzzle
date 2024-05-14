@@ -54,6 +54,7 @@ export type Puzzle = {
 };
 
 export const PUZZLE_DEFAULTS: Partial<Puzzle> =  {
+    name: '',
     author: '',
     description: '',
     commands: [],
