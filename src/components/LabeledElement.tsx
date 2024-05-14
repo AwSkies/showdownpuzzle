@@ -1,5 +1,8 @@
 import styles from './LabeledElement.module.css';
 
+/**
+ * Creates an element with the given label and an abbreviation given by the description. The element must be given a unique id. 
+ */
 function LabeledElement({ label, element, description }: { label: string, element: React.JSX.Element, description?: string }) {
   return (
     <div className={styles.labeledElement}>
