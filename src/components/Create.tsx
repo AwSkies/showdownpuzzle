@@ -1,7 +1,7 @@
 import CreatePuzzle from "./CreatePuzzle";
 import PuzzlesViewer from "./PuzzlesViewer";
-import styles from "./Create.module.css";
 import { print } from "../utils/print-colored";
+import styles from "./Create.module.css";
 
 function Create() {
   return (
