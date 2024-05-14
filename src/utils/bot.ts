@@ -29,7 +29,7 @@ self.onmessage = ({ data }) => {
             if (puzzle.avatar) {
                 user.sendCommand('avatar', [puzzle.avatar]);
             }
-            this.challenge()
+            this.challenge();
         }
 
         '|updateuser|'(args: Protocol.Args['|updateuser|']) {
@@ -52,11 +52,12 @@ self.onmessage = ({ data }) => {
             if (!puzzle.crits) {
                 user.send(`Critical hit detected. Aborting puzzle and resending a challenge to ${challenger}.`);
                 user.sendCommand('forfeit');
-                this.challenge()
+                this.challenge();
             }
         }
 
         challenge() {
+            // TODO: Figure out and fix challenging logic
             user.sendCommand('challenge', [challenger, /*puzzle.team?.format as string*/'gen9nationaldexubers']);
         }
     }();
