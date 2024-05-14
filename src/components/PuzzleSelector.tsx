@@ -1,4 +1,4 @@
-import styles from "./PuzzlesViewer.module.css";
+import styles from "./PuzzleSelector.module.css";
 
 function PuzzlesViewer() {
   return (

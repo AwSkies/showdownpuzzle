@@ -1,5 +1,5 @@
 import CreatePuzzle from "./CreatePuzzle";
-import PuzzlesViewer from "./PuzzlesViewer";
+import PuzzleSelector from "./PuzzleSelector";
 import { print } from "../utils/print-colored";
 import styles from "./Create.module.css";
 
@@ -7,7 +7,7 @@ function Create() {
   return (
     <div className={styles.Create}>
       {/* TODO: Make puzzle viewer */}
-      <PuzzlesViewer /> 
+      <PuzzleSelector /> 
       <CreatePuzzle onSave={puzzle => {
         print(`Saving puzzle: ${JSON.stringify(puzzle)}`);
       }}/>
