@@ -19,9 +19,9 @@
 		"scope": "typescriptreact",
 		"prefix": "labeledinput",
 		"body": [
-			"<LabeledElement label=\"$1\" description=\"$2\" element={",
+			"<LabeledElement label=\"$1\" description=\"$2\">",
 			"  <input id=\"$3\" type=\"${4:text}\" value={$5} placeholder=\"$6\" ${7:required }onChange={e => $8} />",
-			"} />$0"
+			"</LabeledElement>$0"
 		],
 		"description": "Create a labeled input with proper parameters."
 	},
@@ -29,9 +29,9 @@
 		"scope": "typescriptreact",
 		"prefix": "labeledelement",
 		"body": [
-			"<LabeledElement label=\"$1\" description=\"$2\" element={",
+			"<LabeledElement label=\"$1\" description=\"$2\">",
 			"  <$3 id=\"$4\" $5 />",
-			"} />$0"
+			"</LabeledElement>$0"
 		],
 		"description": "Create a labeled element"
 	}

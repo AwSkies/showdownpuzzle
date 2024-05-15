@@ -4,11 +4,8 @@ import styles from './LabeledElement.module.css';
  * Creates an element with the given label and an abbreviation given by the description. The element must be given a unique id. 
  */
 function LabeledElement({ label, description, children: child }: { label: string, description?: string, children: JSX.Element }) {
-  if ((child.type in ['input', 'meter', 'progress', 'select', 'textarea'])) {
-    throw new Error(`Element of type ${child.type} is not labelable.`);
-  }
   if (!child.props.id) {
-    throw new Error(`Element ${child} does not have an id`);
+    throw new Error(`Child of LabeledElement does not have an id.`);
   }
 
   return (
