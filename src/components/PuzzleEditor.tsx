@@ -47,8 +47,8 @@ function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, o
             <LabeledElement label="Timer" description="Whether the timer should be turned on during the puzzle, at the beginning of the battle. This will mean the player will have a limited amount of time to complete the puzzle.">
               <input id="create-puzzle-timer" type="checkbox" checked={puzzle.timer} onChange={e => onChange({ ...puzzle, timer: e.target.checked })} />
             </LabeledElement>
-            <input type="submit" value="Save puzzle" />
           </fieldset>
+          <input type="submit" value="Save puzzle" />
         </fieldset>
       </form>
     </div>
