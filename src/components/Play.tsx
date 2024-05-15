@@ -26,18 +26,18 @@ function Play() {
   }
 
   return (
-      <form className={styles.play} onSubmit={handleSubmit}>
-        <LabeledElement label="Username" element={
-          <input id="play-username" value={username} placeholder="Username" required onChange={(e) => setUsername(e.target.value)} />
-        } />
-        <LabeledElement label="Password" element={
-          <input id="play-password" value={password} placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
-        } />
-        <LabeledElement label="Challenger Username" description="The username of the Pokemon Showdown account to challenge." element={
-          <input id="play-challenger" value={challenger} placeholder="Username" required onChange={(e) => setChallenger(e.target.value)} />
-        } />
-        <input type="submit" value="Log in" disabled={!canLogin} />
-      </form>
+    <form className={styles.play} onSubmit={handleSubmit}>
+      <LabeledElement label="Username">
+        <input id="play-username" value={username} placeholder="Username" required onChange={(e) => setUsername(e.target.value)} />
+      </LabeledElement>
+      <LabeledElement label="Password">
+        <input id="play-password" value={password} placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+      </LabeledElement>
+      <LabeledElement label="Challenger Username" description="The username of the Pokemon Showdown account to challenge.">
+        <input id="play-challenger" value={challenger} placeholder="Username" required onChange={(e) => setChallenger(e.target.value)} />
+      </LabeledElement>
+      <input type="submit" value="Log in" disabled={!canLogin} />
+    </form>
   );
 }
 
