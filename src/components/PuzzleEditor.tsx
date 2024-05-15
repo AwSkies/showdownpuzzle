@@ -28,15 +28,15 @@ function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, o
             <legend>Content</legend>
             <fieldset>
               <legend>Team</legend>
-              {/* TODO: Team */}
+              TODO: Team
             </fieldset>
             <fieldset>
               <legend>Commands</legend>
-              {/* TODO: Commands */}
+              TODO: Commands
             </fieldset>
             <fieldset>
               <legend>Hints</legend>
-              {/* TODO: Hints */}
+              TODO: Hints
             </fieldset>
           </fieldset>
           <fieldset>
