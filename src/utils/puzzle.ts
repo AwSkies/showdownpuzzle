@@ -48,7 +48,7 @@ export type Puzzle = {
      */
     timer?: boolean,
     /**
-     * The avatar the bot should use for the puzzle.
+     * The avatar the bot should use for the puzzle. Also used as the icon/thumbnail to represent the puzzle.
      */
     avatar?: AvatarIdent
 };
