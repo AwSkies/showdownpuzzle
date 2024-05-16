@@ -1,15 +1,14 @@
 import { Protocol } from "@pkmn/protocol";
 import { Actions } from "@pkmn/login";
-import { Sets } from "@pkmn/sets";
 import { print } from "./print-colored";
-import { puzzleDefaults, Puzzle } from "./puzzle";
+import { Puzzle } from "./puzzle";
 import User from "./user";
 
 const self = globalThis;
 
 self.onmessage = ({ data }) => {
     const BYPASS_CORS = 'https://corsproxy.io/?';
-    const { username, password, puzzle, challenger }: { username: string, password: string, puzzle: Puzzle, challenger: string } = data;
+    const { puzzle, challenger, username, password }: { puzzle: Puzzle, challenger: string, username: string, password: string } = data;
     const user = new User();
 
     // Create new instance of anonymous class which implements handler
