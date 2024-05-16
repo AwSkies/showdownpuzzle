@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AvatarIdent } from "@pkmn/protocol";
 import Avatar from "./Avatar";
 import LabeledElement from "./LabeledElement";
@@ -5,6 +6,8 @@ import { Puzzle } from "../utils/puzzle";
 import styles from "./PuzzleEditor.module.css";
 
 function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, onChange: (puzzle: Partial<Puzzle>) => void, onSave: (puzzle: Puzzle) => void }) {
+  const [avatarValid, setAvatarValid] = useState(true);
+
   return (
     <div className={styles.PuzzleEditor}>
       <h2>Create Puzzle</h2>
@@ -52,10 +55,10 @@ function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, o
             <LabeledElement label="Avatar" description="The avatar which the bot account will use on Showdown during this puzzle. Also used as the icon/thumbnail to represent this puzzle.">
               <input id="create-puzzle-avatar" value={puzzle.avatar} placeholder="Avatar" onChange={e => onChange({ ...puzzle, avatar: e.target.value as AvatarIdent })} />
             </LabeledElement>
-            <Avatar avatar={puzzle.avatar as AvatarIdent} />
+            <Avatar avatar={puzzle.avatar as AvatarIdent} onValidity={setAvatarValid}/>
             <span><a href="https://play.pokemonshowdown.com/sprites/trainers/">List of avatars</a></span>
           </fieldset>
-          <input type="submit" value="Save puzzle" />
+          <input type="submit" value="Save puzzle" disabled={!avatarValid} />
         </fieldset>
       </form>
     </div>
