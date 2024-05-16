@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PuzzleEditor from "./PuzzleEditor";
 import PuzzleSelector from "./PuzzleSelector";
-import { puzzleDefaults } from "../utils/puzzle";
-import { print } from "../utils/print-colored";
-import { getPuzzles, savePuzzles } from "../utils/save-utils";
+import { Puzzle, puzzleDefaults } from "../utils/puzzle";
 import styles from "./Create.module.css";
 
-function Create() {
-  const [puzzles, setPuzzles] = useState(getPuzzles());
+function Create({ puzzles, setPuzzles }: { puzzles: Puzzle[], setPuzzles: (p: Puzzle[]) => void }) {
   const [current, setCurrent] = useState(puzzleDefaults);
   const [index, setIndex] = useState(-1);
-
-  // Save puzzles when they are changed
-  useEffect(() => {
-    savePuzzles(puzzles)
-    print(`Saved puzzles: ${JSON.stringify(puzzles)}`);
-  }, [puzzles]);
 
   return (
     <div className={styles.Create}>
