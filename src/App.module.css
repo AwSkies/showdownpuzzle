@@ -3,7 +3,7 @@
     font-size: calc(5px + 2vmin);
     color: white;
     background-color: #282c34;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
