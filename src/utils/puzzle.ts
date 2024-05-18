@@ -27,10 +27,27 @@ export type Puzzle = {
      */
     description?: string,
     /**
-     * The team for the bot to use for the puzzle, in PokePaste format.
+     * The team for the bot to use for the puzzle.
      */
-    // TODO: Allow for string to be PokePaste link as well
-    team: Team,
+    team: {
+        /**
+         * The team format.
+         */
+        format: "team",
+        /**
+         * The team value.
+         */
+        value: Team
+    } | {
+        /**
+         * The team format.
+         */
+        format: "json" | "pokepaste" | "link",
+        /**
+         * The team value.
+         */
+        value: string
+    },
     /**
      * The sequence of commands to execute during the puzzle.
      */
@@ -53,10 +70,14 @@ export type Puzzle = {
     avatar?: AvatarIdent
 };
 
-export const puzzleDefaults: Partial<Puzzle> =  {
+export const puzzleDefaults: Partial<Puzzle> = {
     name: '',
     author: '',
     description: '',
+    team: {
+        format: 'pokepaste',
+        value: ''
+    },
     commands: [],
     hints: [],
     crits: true,
