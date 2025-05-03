@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AvatarIdent } from "@pkmn/protocol";
 import Avatar from "./Avatar";
 import LabeledElement from "./LabeledElement";
@@ -7,6 +7,18 @@ import styles from "./PuzzleEditor.module.css";
 
 function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, onChange: (puzzle: Partial<Puzzle>) => void, onSave: (puzzle: Puzzle) => void }) {
   const [avatarValid, setAvatarValid] = useState(true);
+
+  const [displayTeam, setDisplayTeam] = useState('');
+
+  useEffect(() => {
+    if (!puzzle.team) {
+      setDisplayTeam('');
+    } else if (puzzle.team.format == 'team') {
+      setDisplayTeam(puzzle.team.value.export());
+    } else {
+      setDisplayTeam(puzzle.team.value);
+    }
+  }, [puzzle.team]);
 
   return (
     <div className={styles.PuzzleEditor}>
@@ -33,7 +45,26 @@ function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, o
             <legend>Content</legend>
             <fieldset>
               <legend>Team</legend>
-              TODO: Team
+              <LabeledElement label="Format" description="PokePaste: The team in PokePaste format. See below for more. Link: A link to the PokePaste page with the team on it.">
+                <select id="create-puzzle-team-format" onChange={
+                  e => onChange({
+                    ...puzzle,
+                    team: {
+                      format: e.target.value as 'pokepaste' | 'link',
+                      value: '',
+                      battleFormat: ''
+                    }
+                  })
+                }>
+                  <option value="pokepaste">PokePaste</option>
+                  <option value="link">Link</option>
+                </select>
+              </LabeledElement>
+              <LabeledElement label="Team" description="The team for the bot to use for the puzzle.">
+                {
+                  <textarea id="create-puzzle-team" />
+                }
+              </LabeledElement>
             </fieldset>
             <fieldset>
               <legend>Commands</legend>
@@ -55,7 +86,7 @@ function PuzzleEditor({ puzzle, onChange, onSave }: { puzzle: Partial<Puzzle>, o
             <LabeledElement label="Avatar" description="The avatar which the bot account will use on Showdown during this puzzle. Also used as the icon/thumbnail to represent this puzzle.">
               <input id="create-puzzle-avatar" value={puzzle.avatar} placeholder="Avatar" onChange={e => onChange({ ...puzzle, avatar: e.target.value as AvatarIdent })} />
             </LabeledElement>
-            <Avatar avatar={puzzle.avatar as AvatarIdent} onValidity={setAvatarValid}/>
+            <Avatar avatar={puzzle.avatar as AvatarIdent} onValidity={setAvatarValid} />
             <span><a href="https://play.pokemonshowdown.com/sprites/trainers/">List of avatars</a></span>
           </fieldset>
           <input type="submit" value="Save puzzle" disabled={!avatarValid} />

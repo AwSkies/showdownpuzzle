@@ -31,23 +31,34 @@ export type Puzzle = {
      */
     team: {
         /**
-         * The team format.
+         * The team is a `Team` object.
          */
         format: "team",
         /**
-         * The team value.
+         * The team.
          */
         value: Team
+    } | (({
+        /**
+         * The format is an object to saved in and loaded from json.
+         */
+        format: "json",
+        /**
+         * The arbitrary object.
+         */
+        value: any
     } | {
         /**
-         * The team format.
+         * The team is in PokePaste format or is a link to a PokePaste page.
          */
-        format: "json" | "pokepaste" | "link",
+        format: "pokepaste" | "link",
+        value: string,
+    }) & {
         /**
-         * The team value.
+         * The format on Pokemon Showdown for the battle to be in.
          */
-        value: string
-    },
+        battleFormat: string
+    }),
     /**
      * The sequence of commands to execute during the puzzle.
      */
@@ -76,7 +87,8 @@ export const puzzleDefaults: Partial<Puzzle> = {
     description: '',
     team: {
         format: 'pokepaste',
-        value: ''
+        value: '',
+        battleFormat: ''
     },
     commands: [],
     hints: [],

@@ -11,17 +11,20 @@ function getSavedPuzzles(): Puzzle[] {
     const partials: Partial<Puzzle>[] = puzzlesCookie ? JSON.parse(puzzlesCookie) : [];
     // Fill in defaults for partial puzzles and cast to full puzzle
     const puzzles = partials.map(puzzle => {
-        let team = puzzle.team;
-        if (team && team.format === 'json') {
-            team = {
+        const loadedTeam = puzzle.team;
+        if (loadedTeam && loadedTeam.format === 'json') {
+            const team = {
                 format: 'team',
-                value: Team.fromJSON(team.value)!
+                value: Team.fromJSON(loadedTeam.value)!
             };
+        } else {
+            const team = loadedTeam;
         }
+        
         return {
             ...puzzleDefaults,
             ...puzzle,
-            team
+            loadedTeam
         } as Puzzle;
     });
     // TODO: Corruption detection
@@ -35,7 +38,7 @@ function savePuzzles(puzzles: Puzzle[]) {
             ...puzzle,
             team: puzzle.team.format === 'team' ? {
                 format: 'json',
-                value: puzzle.team.value.export()
+                value: JSON.parse(puzzle.team.value.toJSON())
             } : puzzle.team
         };
     })));
